@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+
+<html>
+    <h1 style="background-color:Linen;">Javascript example</h1>
+    
+<script>
+//1) How are the boolean values represented?
+//In Javascript boolean values can be represented with true or false , if the value is 0, -0, null, false, NaN, undefined,empty 
+//string (""), empty array, string("false"), any type which has initial value false. All other objects are considered true.
+
+var arr = [9,8,7,6,5,4];
+var arr2 = [];
+
+console.log(new Boolean(0));//false
+console.log(new Boolean(46));//true
+console.log(new Boolean(-0));//false
+console.log(new Boolean(null));//false
+console.log(new Boolean(false));//false
+console.log(new Boolean(true));//true
+console.log(new Boolean(NaN));//false
+console.log(new Boolean(undefined));//false
+console.log(new Boolean(""));//false
+console.log(new Boolean("abc"));//true
+console.log(new Boolean(arr));//true
+console.log(new Boolean(arr2));//false
+
+//2)What operators are short-circuited?
+//Short circuit operators are && , || in Javascript.
+var me = 20;
+  var and = (me < 25 && me > 10);
+  console.log("me < 25 && me > 10");
+  console.log(and);
+
+  var mom = 45;
+  var or = (mom > 50 || mom < 8);
+  console.log("mom > 50 || mom < 8");
+  console.log(or);
+
+  function func1() {
+    return true;
+  }
+   function func2(){
+    return false;
+  }
+  function func3(){
+    console.log("func3 executed");
+    return true;
+  }
+  function func4(){
+    console.log("func4 executed");
+    return false;
+  }
+    if(func1() && func2())
+  {
+    console.log("Short Circuit");
+  }
+
+  if(func3() || func4()) //shows that func 4 is not executed.
+  {
+    console.log("Short Circuit 2 ");
+  }
+
+//3)How are the results of short-circuited operators computed? (Consider also function calls)
+//In and operations if the first one is true both expressions are checked otherwise only first one is checked, if both are 
+//true turns true else turns false but in or operation if the first expression is true second one is not checked 
+//and if one of them is true turns true.
+
+function func()
+    {
+    console.log("in js func");
+    return true;
+    }
+  function func2()
+  {
+    console.log("in js func2");
+    return false;
+  } 
+
+console.log(true && func()); // executing both
+console.log(func() && func2()); //executing both
+console.log(func2() && func()); //executing just func2
+console.log(true || func2()); //not executes func2
+console.log(func() || func2()); // just executes func
+console.log(func2() || func()); //executing both
+
+//4)What are the advantages about short-circuit evaluation?
+//Programs will be computed faster due to not computing second expression in the or,and expression. Also as shown below
+//if there would not be short circuit operation our program will crash due to exceeding array size . 
+var arr1 = ["easy","on","me"];
+var i = 0;
+var arrLen = 3;
+var key = "me";
+while((i < arrLen) && (arr1[i] != key))
+{
+  i = i + 1;
+}
+//5)What are the potential problems about short-circuit evaluation?
+//If there is a side effect in the expression which is used with short circuit operation and if correctness of the program
+//depends on the operation this would lead to a problem in the program.
+var p = 12;
+var q = 15;
+while(((q = q-1) > 12) ||  (q == p) ) // it would print 3 times
+{
+  console.log("test");
+}
+
+</script>
+
+</html>

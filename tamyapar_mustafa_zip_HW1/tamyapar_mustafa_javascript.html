@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+
+<html>
+    <h1 style="background-color:Linen;">Javascript example</h1>
+    
+<script>
+//1) What types are legal for subscripts?
+// In JavaScript integer is the only type allowed for subscripting.Other types will return undefined.
+var me = ["mustafa", "efe","tamyapar"];
+
+for(let i = 0; i < me.length; i++){
+  console.log(me[i]);
+}
+
+//Accessing elements in Javascript arrays.
+console.log("First element: " + me[0]);
+
+
+//2)Are subscripting expressions in element references range checked?
+//Javascript checks arrays in a way that, it returns undefined when user goes out of bounds.
+//Also it does not returns garbage value at out of range
+var arr2 = [9,8,7,6,5,4];
+console.log("First element: " + arr2[10]);//Does not gives a error but says undefined
+
+//4)When does allocation takes place?
+//Allocation takes place in rune time because javascript are heap dynamic.
+//lloca = arr4[0]
+
+//5)Are ragged or rectangular multidimensional arrays allowed, or both?
+//Javascript allows both ragged and rectangular arrays
+var arrRagged = [
+    [ 1 ],
+    [ 2, 3, 4 ], 
+    [ 5, 6 ]
+];
+
+console.log("Ragged Array example ");
+
+for(let i = 0; i < arrRagged.length; i++){
+  console.log(arrRagged[i]);
+}
+
+var Movies = [
+    ["Harry Potter 1", 5],
+    ["Harry Potter 2", 4],
+    ["Harry Potter 3", 3],
+    ["Harry Potter 4", 5],
+    ["Harry Potter 5", 1]
+];
+
+console.log("Rectangular Array example ");
+
+for(let i = 0; i < Movies.length; i++){
+  console.log(Movies[i]);
+}
+
+//6)Can array objects be initialized?
+//Object arrays can be initialized in javascript arrays.
+const personal = {Name:"Mustafa", lastName:"Tamyapar", number:123456};
+console.log("Object example ");
+var objArr = [personal];
+console.log(objArr[0]);
+
+//7)Are any kind of slices supported?
+//Javascript supports slices
+console.log("whole array: ");
+var colors = ["Black", "Grey", "Purple", "Yellow", "Pink"];
+for(let i = 0; i < colors.length; i++){
+  console.log(colors[i]);
+}
+console.log("Slice: ");
+var darkerColors = colors.slice(0, 2); // ["Black", "Grey"]
+for(let i = 0; i < darkerColors.length; i++){
+  console.log(darkerColors[i]);
+}
+//8)Which operators are provided?
+//In javascript +,-,%,>,!= and much more are provided but i choosed to show these five.
+var opArr1 = [1,2,3,4,5];
+var opArr2 = [2,4,6,8,10];
+var x = opArr1[0] + opArr2[0]; //+
+var y = opArr2[4] % 5 //%
+var z = opArr1[1] - opArr2[2] //-
+
+for (x=5; x>2; x--) //>
+  console.log("x="+x);
+
+if( opArr1 != opArr2 )
+    console.log("Wow not equal"); //!=
+</script>
+
+</html>
